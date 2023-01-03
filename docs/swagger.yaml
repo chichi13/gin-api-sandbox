@@ -1,0 +1,89 @@
+basePath: /api/v1
+definitions:
+  schemas.BaseResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /fibonacci/iterative/{n}:
+    get:
+      consumes:
+      - application/json
+      description: Get the fibonacci number with iterative algorithm
+      parameters:
+      - description: Number
+        in: path
+        name: "n"
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/schemas.BaseResponse'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/schemas.BaseResponse'
+      summary: Get the fibonacci number with iterative algorithm
+      tags:
+      - fibonacci
+  /fibonacci/recursive/{n}:
+    get:
+      consumes:
+      - application/json
+      description: Get the fibonacci number with recursive algorithm
+      parameters:
+      - description: Number
+        in: path
+        name: "n"
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/schemas.BaseResponse'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/schemas.BaseResponse'
+      summary: Get the fibonacci number with recursive algorithm
+      tags:
+      - fibonacci
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Responds if the server is alive
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: BaseResponse
+          schema:
+            $ref: '#/definitions/schemas.BaseResponse'
+      summary: Responds if the server is alive
+      tags:
+      - system
+swagger: "2.0"
