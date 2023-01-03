@@ -2,7 +2,7 @@ package main
 
 import (
 	"gin-api/config"
-	"gin-api/controllers"
+	"gin-api/controllers/v1"
 	_ "gin-api/docs"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -29,9 +29,13 @@ func main() {
 	}
 
 	r := gin.Default()
-	v1 := r.Group("/api/v1")
-	v1.GET("/health", controllers.Health)
-	controllers.GetFibonacci(v1)
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	r.Run()
+	apiV1 := r.Group("/api/v1")
+	apiV1.GET("/health", v1.Health)
+	v1.GetFibonacci(apiV1)
+
+	if config.Settings.Env == config.Development {
+		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	}
+
+	_ = r.Run()
 }

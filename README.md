@@ -26,6 +26,7 @@ go run main.go
 
 ```bash
 go build main.go
+go build -o gin-api main.go # Compile the application and rename it
 ```
 
 ### Install a package and save it in the `go.mod` file

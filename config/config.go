@@ -7,8 +7,17 @@ import (
 	"os"
 )
 
+type Env string
+
+const (
+	Development Env = "development"
+	// Production  Env = "production"
+	// Testing     Env = "testing"
+)
+
 type Config struct {
 	GinMode string `env:"GinMode"`
+	Env     Env    `env:"Env" envDefault:"production"`
 }
 
 var Settings = loadEnv()
@@ -29,7 +38,7 @@ func loadEnv() Config {
 
 	err = env.Parse(&cfg)
 	if err != nil {
-		log.Fatalf("unable to parse ennvironment variables: %e", err)
+		log.Fatalf("Unable to parse ennvironment variables: %e", err)
 	}
 
 	return cfg

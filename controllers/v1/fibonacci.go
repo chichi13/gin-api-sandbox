@@ -1,7 +1,6 @@
-package controllers
+package v1
 
 import (
-	"fmt"
 	"gin-api/schemas"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -13,7 +12,6 @@ var fibonacciMemo map[int]float64
 func GetFibonacci(c *gin.RouterGroup) {
 	c.GET("/fibonacci/recursive/:n", func(c *gin.Context) {
 		n, err := strconv.Atoi(c.Param("n"))
-		fmt.Println(n)
 		if err != nil {
 			// If the parameter is not an integer, return a bad request
 			c.JSON(http.StatusBadRequest, schemas.BaseResponse{
