@@ -42,22 +42,22 @@ func GetFibonacci(c *gin.RouterGroup) {
 	})
 }
 
-//	@Summary		Get the fibonacci number with recursive algorithm
-//	@Description	Get the fibonacci number with recursive algorithm
-//	@Accept			json
-//	@Produce		json
-//	@Param			n	path		int						true	"Number"
-//	@Success		200	{object}	schemas.BaseResponse	"Success"
-//	@Failure		400	{object}	schemas.BaseResponse	"Bad request"
-//	@Router			/fibonacci/recursive/{n} [get]
-//	@Tags			fibonacci
+// @Summary		Get the fibonacci number with recursive algorithm
+// @Description	Get the fibonacci number with recursive algorithm
+// @Accept			json
+// @Produce		json
+// @Param			n	path		int						true	"Number"
+// @Success		200	{object}	schemas.BaseResponse	"Success"
+// @Failure		400	{object}	schemas.BaseResponse	"Bad request"
+// @Router			/fibonacci/recursive/{n} [get]
+// @Tags			fibonacci
 func recursiveFibonacci(n int) float64 {
 	if n <= 1 {
 		return float64(n)
 	}
 
 	if fibonacciMemo == nil {
-		fibonacciMemo = make(map[int]float64)
+		fibonacciMemo = map[int]float64{}
 	}
 
 	if val, ok := fibonacciMemo[n]; ok {
@@ -69,15 +69,15 @@ func recursiveFibonacci(n int) float64 {
 	return result
 }
 
-//	@Summary		Get the fibonacci number with iterative algorithm
-//	@Description	Get the fibonacci number with iterative algorithm
-//	@Accept			json
-//	@Produce		json
-//	@Param			n	path		int						true	"Number"
-//	@Success		200	{object}	schemas.BaseResponse	"Success"
-//	@Failure		400	{object}	schemas.BaseResponse	"Bad request"
-//	@Router			/fibonacci/iterative/{n} [get]
-//	@Tags			fibonacci
+// @Summary		Get the fibonacci number with iterative algorithm
+// @Description	Get the fibonacci number with iterative algorithm
+// @Accept			json
+// @Produce		json
+// @Param			n	path		int						true	"Number"
+// @Success		200	{object}	schemas.BaseResponse	"Success"
+// @Failure		400	{object}	schemas.BaseResponse	"Bad request"
+// @Router			/fibonacci/iterative/{n} [get]
+// @Tags			fibonacci
 func iterativeFibonacci(n int) float64 {
 	if n <= 1 {
 		return float64(n)
