@@ -16,8 +16,8 @@ const (
 )
 
 type Config struct {
-	GinMode string `env:"GinMode"`
-	Env     Env    `env:"Env" envDefault:"production"`
+	GinMode string `env:"gin_mode"`
+	Env     Env    `env:"env" envDefault:"production"`
 }
 
 var Settings = loadEnv()

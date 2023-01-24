@@ -26,13 +26,12 @@ go run main.go
 
 ```bash
 go build main.go
-go build -o gin-api main.go # Compile the application and rename it
+go build -o gin-api main.go # Compile the application and rename it to gin-api
 ```
 
 ### Install a package and save it in the `go.mod` file
 
-```
-go get -u github.com/gin-gonic/gin
+```bash
 go install github.com/gin-gonic/gin
 ```
 
@@ -48,9 +47,20 @@ go mod tidy
 swag init
 ```
 
+You can find the documentation at http://localhost:8080/swagger/index.html (only in development mode).
+
 ### Format the code
 
 ```bash
 go fmt
 swag fmt # for the format of the swagger documentation
+```
+
+# Gin API Sandbox
+
+Create an env file:
+
+```bash
+env=development
+gin_mode=release # for production only
 ```
